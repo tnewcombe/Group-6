@@ -1,0 +1,27 @@
+List of tasks:
+  as a user i want to access multiple motorsports series data easily
+  as a developer i would like to convert the API return data into readable information
+  as a developer i would like to present information in a clear and understandable manor 
+  as a user i would like to get weather data for specific events
+  as a user i would like to see social media posts related to specific events
+  as a user i would like a content filter on the social media posts
+  as a user i would like to get news post data for specific events
+  
+  
+Sprint 1:
+  implement a command line menu to pick a motorsport series
+  get APIs and store the data in useable variables
+  
+  APis:
+  Tom - News
+  Lewis - Twitter
+  Jack - motorsport API
+  morry - Weather
+  
+  
+  
+  
+  
+  http://ergast.com/mrd/query/
+  https://developer.twitter.com/en/docs/api-reference-index
+  
