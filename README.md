@@ -1,3 +1,3 @@
-# Group-6
+# Group 6 - Motorsport App
 
-# THIS IS A TEST MESSAGE FROM LEWIS
+# Backlog
