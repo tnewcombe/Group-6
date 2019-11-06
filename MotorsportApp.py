@@ -20,3 +20,20 @@ def getF1Season(year="current"):
 	result = requests.get(f1_season)
 	return result
     
+def menu():
+	print("Pleach select which motorsport you would like")
+	msport = input()
+
+	motorsports = ['F1', 'f1']
+
+	while msport not in motorsports:
+	    print("please choose a valid option")
+	    msport = input()
+
+	print("Which year?")
+	year = input()
+
+	print("Which race would you like?")
+	race = input()
+
+
