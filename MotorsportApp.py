@@ -19,6 +19,12 @@ def getF1Season(year="current"):
 	f1_season = f1_api+year+".json"
 	result = requests.get(f1_season)
 	return result
+
+def getWeather(city='London'):
+  key = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=2e535070ac9219e3c58f19ac7227c197&'.format(city)
+  result = requests.get(key)
+  return result
+
     
 def menu():
 	print("Pleach select which motorsport you would like")
@@ -35,5 +41,7 @@ def menu():
 
 	print("Which race would you like?")
 	race = input()
+	
+	
 
 
