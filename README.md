@@ -7,7 +7,7 @@
 - As a developer I want to implement an API that can gather news data
 - As a developer I want to implement an API that can gather social media data
 - As a developer I want to convert the API data into readable information
-- As a developer I want to present information in a clear and understandable manor
+- As a developer I want to present information in a clear and understandable manner
 - As a user I want to access motorsport data easily
 - As a user I want to view multiple motorsports
 - As a user I want to get weather data for specific events
@@ -20,7 +20,11 @@
 - Create a Command Line Menu
 - Implement APIs for F1, weather and news
 
-## Sprint 2 (7/11/19 - )
+## Sprint 2 (7/11/19 - 13/11/19)
 
 - Implement Social Media APIs
 - Implement APIs for one or more other motorsports
+
+## Sprint 3 (14/11/19 - 20/11/19)
+
+- Present data gathered from APIs in a clear and readable format
