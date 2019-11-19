@@ -1,5 +1,6 @@
 import requests
 import json
+import praw
 from pprint import pprint
 from datetime import datetime
 
@@ -12,6 +13,10 @@ fe_key = 'tghwbk5bbq9xdhh4ffc6nm2q'
 nascar_key = 'b9yp48fazmd4j7dsj3z6fkjr'
 indy_key = 'rantz54umfy25grmk89vt7r5'
 motogp_key = '6hu6q2j774j8k7nvpkntunq6'
+
+#REDDIT KEYS
+reddit = praw.Reddit(client_id ='LffVAg7jKO9CTA', client_secret = 'zJAotuk8q5p3Nfu9kJZBO7xWZYc', user_agent = 'Group6Project', username = 'Group6UoL', password = 'Group6')
+reddit.read_only = True
 
 def getNascarRace(series = 'mc', year='2019'):
 	url = "http://api.sportradar.us/nascar-t3/{}/{}/races/schedule.json?api_key={}".format(series,year,nascar_key)
@@ -55,6 +60,19 @@ def getNews(url="https://newsapi.org/v2/everything?",pageSize=20,apiKey="c78ac97
 
 	return response
 
+def getReddit(sport):
+	if sport == 'F1':
+		subReddit = reddit.subreddit('formula1')
+	elif sport == 'NASCAR':
+		subReddit = reddit.subreddit('NASCAR')
+
+	for sub in subReddit.hot(limit = 5):
+		print(sub.title)
+		print(sub.shortlink)
+		print('')
+	return
+
+
 def menu():
 	print("Please select which motorsport you would like:")
 	msport = input("Choose from:\n> F1\n> NASCAR\n\n> ")
@@ -83,6 +101,10 @@ def menu():
 
 		pprint(weather)
 		pprint(headlines)
+		print('\nReddint posts: \n')
+		getReddit(msport)
+
+        
 	elif msport == 'NASCAR':
 		# Needs Completing
 		nascar_json = getNascarRace().json()
