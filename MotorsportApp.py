@@ -40,9 +40,32 @@ def getF1Season(year="current"):
 	return result
 
 def getWeather(city='London'):
+	'''
+	Parameter: City 
+	Type: String
+	Description: Input a city name
+	'''
 	key = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=2e535070ac9219e3c58f19ac7227c197&'.format(city)
-	result = requests.get(key)
-	return result
+	try:
+		result = json.loads(requests.get(key).content)
+	except:
+		# sth wrong with request
+		return 'error'
+	else:
+		final_result = {
+        # City name
+		# MAX temp
+		# MIN temp
+		# Weather condiction
+		# Weather description
+		result['name'],
+        str(result['main']['temp_max']),
+        str(result['main']['temp_min']),
+        result['weather'][0]['main'],
+        result['weather'][0]['description']
+    }
+	return final_result
+
 
 def getNews(url="https://newsapi.org/v2/everything?",pageSize=20,apiKey="c78ac9726f714b79b3798843898a7400"):
 	# Specify the query and number of returns
