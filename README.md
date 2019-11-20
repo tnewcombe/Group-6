@@ -18,13 +18,14 @@
 ## Sprint 1 (30/10/19 - 6/11/19)
 
 - Create a Command Line Menu
-- Implement APIs for F1, weather and news
+- Implement APIs for F1, weather and newspaint
 
 ## Sprint 2 (7/11/19 - 13/11/19)
 
 - Implement Social Media APIs
-- Implement APIs for one or more other motorsports
-
-## Sprint 3 (14/11/19 - 20/11/19)
-
 - Present data gathered from APIs in a clear and readable format
+
+## Sprint 3 (14/11/19 - 27/11/19)
+
+- Implement APIs for one or more other motorsports
+- Implement a content filter for social media posts
