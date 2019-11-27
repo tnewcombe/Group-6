@@ -1,6 +1,5 @@
 import requests
 import json
-import praw
 from pprint import pprint
 from datetime import datetime
 
@@ -13,10 +12,6 @@ fe_key = 'tghwbk5bbq9xdhh4ffc6nm2q'
 nascar_key = 'b9yp48fazmd4j7dsj3z6fkjr'
 indy_key = 'rantz54umfy25grmk89vt7r5'
 motogp_key = '6hu6q2j774j8k7nvpkntunq6'
-
-#REDDIT KEYS
-reddit = praw.Reddit(client_id ='LffVAg7jKO9CTA', client_secret = 'zJAotuk8q5p3Nfu9kJZBO7xWZYc', user_agent = 'Group6Project', username = 'Group6UoL', password = 'Group6')
-reddit.read_only = True
 
 def getNascarRace(series = 'mc', year='2019'):
 	url = "http://api.sportradar.us/nascar-t3/{}/{}/races/schedule.json?api_key={}".format(series,year,nascar_key)
@@ -83,17 +78,34 @@ def getNews(url="https://newsapi.org/v2/everything?",pageSize=20,apiKey="c78ac97
 
 	return response
 
-def getReddit(sport):
-	if sport == 'F1':
-		subReddit = reddit.subreddit('formula1')
-	elif sport == 'NASCAR':
-		subReddit = reddit.subreddit('NASCAR')
 
-	for sub in subReddit.hot(limit = 5):
-		print(sub.title)
-		print(sub.shortlink)
-		print('')
-	return
+def getReddit(msport):
+    base_url = 'https://www.reddit.com/'
+    data = {'grant_type': 'password', 'username': 'Group6UoL', 'password': 'Group6'}
+    auth = requests.auth.HTTPBasicAuth('IWrfJG6Tht2Ofw', 'mlrb5SiyS3TZjsvKUfW00L36d7Q')
+    r = requests.post(base_url + 'api/v1/access_token',
+                      data=data,
+                      headers={'user-agent': 'University of Lincoln Group 6 by Group6UoL'},
+                      auth=auth)
+    d = r.json()
+    
+    token = 'bearer ' + d['access_token']
+    base_url2 = 'https://oauth.reddit.com'
+    headers = {'Authorization': token, 'User-Agent': 'University of Lincoln Group 6 by Group6UoL'}
+    
+    response = requests.get(base_url2 + '/api/v1/me', headers=headers)
+
+    if response.status_code == 200:
+        payload = {'g': 'Global', 'limit': 5}
+        response = requests.get(base_url2 + '/r/formula1/new', headers=headers, params=payload)
+        values = response.json()
+
+
+                
+        for i in range(len(values['data']['children'])):
+            print(values['data']['children'][i]['data']['title'])
+            print('https://www.reddit.com',values['data']['children'][i]['data']['permalink'])
+            print('')
 
 
 def menu():
@@ -116,7 +128,7 @@ def menu():
 		location = circuit['Location']
 
 		print("Location: {}\nCircuit: {}".format(location['country'],circuit['circuitName']))
-		weather = getWeather(location['locality']).json()
+		weather = getWeather(location['locality'])
 		news_json = getNews().json()
 		headlines = []
 		for i in news_json['articles']:
