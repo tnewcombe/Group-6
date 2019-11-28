@@ -105,7 +105,7 @@ def getReddit(msport):
 
 def menu():
 	print("Please select which motorsport you would like:")
-	msport = input("Choose from:\n> F1\n> NASCAR\n\n> ")
+	msport = input("Choose from:\n> F1\n\n> ")
 	msport.upper()
 
 	motorsports = ['F1']
