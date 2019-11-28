@@ -13,11 +13,6 @@ nascar_key = 'b9yp48fazmd4j7dsj3z6fkjr'
 indy_key = 'rantz54umfy25grmk89vt7r5'
 motogp_key = '6hu6q2j774j8k7nvpkntunq6'
 
-def getNascarRace(series = 'mc', year='2019'):
-	url = "http://api.sportradar.us/nascar-t3/{}/{}/races/schedule.json?api_key={}".format(series,year,nascar_key)
-	result = requests.get(url)
-	return result
-
 # Valid Options:
 # year: see getF1Season options
 # race: any valid 1 or 2 digit race number during the selected season
@@ -113,7 +108,7 @@ def menu():
 	msport = input("Choose from:\n> F1\n> NASCAR\n\n> ")
 	msport.upper()
 
-	motorsports = ['F1', 'NASCAR']
+	motorsports = ['F1']
 	date = datetime.today().strftime('%Y-%m-%d')
 
 	while msport not in motorsports:
@@ -138,12 +133,5 @@ def menu():
 		pprint(headlines)
 		print('\nReddint posts: \n')
 		getReddit(msport)
-
-        
-	elif msport == 'NASCAR':
-		# Needs Completing
-		nascar_json = getNascarRace().json()
-		#pprint(nascar_json)
-
 
 menu()
